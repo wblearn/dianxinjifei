@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="admin" namespace="/admin" extends="netctoss" >
+		<action name="findAdmin" class="com.tarena.action.admin.ToFindAdminAction">
+			<param name="pageSize">5</param>
+			<result name="success">
+				/WEB-INF/admin/findAdmin.jsp
+			</result>
+			
+		</action>
+		<!-- 进入添加管理员页面 -->
+		<action name="toAddAdmin">
+			<result name="success">
+				/WEB-INF/admin/addAdmin.jsp
+			</result>
+		</action>
+		<!-- 添加管理员 -->
+		<action name="addAdmin" class="com.tarena.action.admin.AddAdminAction">
+			<result name="success" >
+				findAdmin
+			</result>
+		</action>
+	</package>
+</struts>

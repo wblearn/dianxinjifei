@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	
+	<!-- 登录模块 -->
+	<package name="login" namespace="/login"
+		extends="struts-default">
+		<!-- 
+			跳转到登录页面Action。
+			该Action不需要写业务代码，class可以省略。
+			当class省略时，Struts2会自动调用ActionSupport，
+			这个类中有默认的方法execute，返回success。
+		-->
+		<action name="toLogin">
+			<result name="success">
+				/WEB-INF/main/login.jsp
+			</result>
+		</action>
+		<!-- 登录校验Action -->
+		<action name="login" 
+			class="com.tarena.action.login.LoginAction">
+			<!-- 成功时跳转到首页 -->
+			<result name="success">
+				/WEB-INF/main/index.jsp
+			</result>
+			<!-- 失败时回登录页 -->
+			<result name="fail">
+				/WEB-INF/main/login.jsp
+			</result>
+		</action>
+		<!-- 生成验证码Action -->
+		<action name="createImage"
+			class="com.tarena.action.login.CreateImageAction">
+			<result name="success" type="stream">
+				<!-- 
+					param是参数注入的标签，用于
+					给组件的属性注入值。这里相当于是给
+					stream类型的Result的inputName属性
+					设置值，其值为"imageStream".
+				 -->
+				<param name="inputName">
+					imageStream
+				</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>

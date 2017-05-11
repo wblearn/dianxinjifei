@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="service" location="307,10" size="280,245">
+    <action name="findService" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="findService.jsp" />
+      </result>
+    </action>
+    <action name="toAddService" location="65,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="addService.jsp" />
+      </result>
+    </action>
+    <action name="addService" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error" />
+    </action>
+    <action name="pauseService" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="checkAccStatus" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="startService" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="deleteService" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="findService.jsp" path="/WEB-INF/service/findService.jsp" location="9,30" size="150,55" />
+  <webResource name="addService.jsp" path="/WEB-INF/service/addService.jsp" location="639,135" size="150,55" />
+</Struts2Diagram>
+

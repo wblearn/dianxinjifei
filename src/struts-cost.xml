@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	
+	<!-- 资费管理模块 -->
+	<package name="cost" namespace="/cost" 
+		extends="netctoss">
+		<!-- 
+			查询Action 。
+			1.若method="hello",则调用Action的hello方法。
+			2.method可以不写，若不写则默认调用
+		      Action的execute方法。
+		-->
+		<action name="findCost" 
+			class="com.tarena.action.cost.FindCostAction">
+			<param name="pageSize">4</param>
+			<result name="success">
+				/WEB-INF/cost/findCost.jsp
+			</result>
+		</action>
+		<!-- 删除Action -->
+		<action name="deleteCost"
+			class="com.tarena.action.cost.DeleteCostAction">
+			<result name="success" type="redirectAction">
+				findCost
+			</result>
+		</action>
+		<!-- 跳转到新增页面Action -->
+		<action name="toAddCost">
+			<result name="success">
+				/WEB-INF/cost/addCost.jsp
+			</result>
+		</action>
+		<!-- 新增保存Action -->
+		<action name="addCost"
+			class="com.tarena.action.cost.AddCostAction">
+			<result name="success" type="redirectAction">
+				findCost
+			</result>
+		</action>
+		<!-- 校验资费名称Action -->
+		<action name="checkCostName"
+			class="com.tarena.action.cost.CheckCostNameAction">
+			<result name="success" type="json">
+				<param name="root">repeat</param>
+			</result>
+		</action>
+		<!-- 跳转到修改页面Action -->
+		<action name="toUpdateCost"
+			class="com.tarena.action.cost.ToUpdateCostAction">
+			<result name="success">
+				/WEB-INF/cost/updateCost.jsp
+			</result>
+		</action>
+		<!-- 修改保存Action -->
+		<action name="updateCost"
+			class="com.tarena.action.cost.UpdateCostAction">
+			<result name="success" type="redirectAction">
+				findCost
+			</result>
+		</action>
+	</package>
+	
+</struts>

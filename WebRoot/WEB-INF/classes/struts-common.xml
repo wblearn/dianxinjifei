@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	
+	<!-- 
+		定义公共的包，将公共的配置放于此包下，
+		如果其他package希望使用此包下的内容，
+		则继承与此包即可。 
+	-->
+	<package name="netctoss" extends="json-default">
+		<!-- 注册拦截器 -->
+		<interceptors>
+			<!-- 注册登录检查拦截器 -->
+			<interceptor name="loginInterceptor"
+				class="com.tarena.interceptor.LoginInterceptor"></interceptor>
+			<!-- 
+				为了引用方便，将登录检查拦截器和默认
+				拦截器打包成栈 
+			-->
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 
+			指定当前包下Action默认引用的拦截器，
+			其作用相当于是在此包下每个Action中
+			都引用了这个拦截器。
+		-->
+		<default-interceptor-ref name="loginStack"/>
+		<!-- 
+			定义全局的Result，全局Result可以被当前包下
+			所有的Action访问。相当于当前包下每个Action
+			中都写了这个全局Result。
+		 -->
+		<global-results>
+			<!-- 踢回登录页面Result -->
+			<result name="login" type="redirectAction">
+				<param name="namespace">/login</param>
+				<param name="actionName">toLogin</param>
+			</result>
+			<!-- 转到错误页面Result -->
+			<result name="error">
+				/WEB-INF/main/error.jsp
+			</result>
+		</global-results>
+	</package>
+	
+</struts>

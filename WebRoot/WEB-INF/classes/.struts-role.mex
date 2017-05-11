@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="role" location="251,10" size="280,420">
+    <action name="findRole" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="findRole.jsp" />
+      </result>
+    </action>
+    <action name="toAddRole" location="65,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="addRole.jsp" />
+      </result>
+    </action>
+    <action name="toUpdateRole" location="65,337" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="updateRole.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="findRole.jsp" path="/WEB-INF/role/findRole.jsp" location="10,30" size="150,55" />
+  <webResource name="addRole.jsp" path="/WEB-INF/role/addRole.jsp" location="10,205" size="150,55" />
+  <webResource name="updateRole.jsp" path="/WEB-INF/role/updateRole.jsp" location="594,310" size="150,55" />
+</Struts2Diagram>
+

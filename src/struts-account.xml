@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	
+	<!-- 账务账号模块 -->
+	<package name="account" namespace="/account"
+		extends="netctoss">
+		<!-- 查询Action -->
+		<action name="findAccount"
+			class="com.tarena.action.account.FindAccountAction">
+			<param name="pageSize">5</param>
+			<result name="success">
+				/WEB-INF/account/findAccount.jsp
+			</result>
+		</action>
+		<!-- 开通/暂停。状态设置 -->
+		<action name="pauseAccount" class="com.tarena.action.account.PauseAccountAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="startAccount" class="com.tarena.action.account.StartAccountAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<!-- 删除 -->
+		<action name="deleteAccount" class="com.tarena.action.account.DeleteAccountAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<!-- 进入新增界面 -->
+		<action name="toAddAccount" >
+			<result name="success">
+				/WEB-INF/account/addAccount.jsp
+			</result>
+		</action>
+		<!-- 推荐人身份证查找 -->
+		<action name="searchRecommender" class="com.tarena.action.account.SearchRecommenderAction">
+			<result name="success" type="json">
+				<param name="root">account</param>
+			</result>
+		</action>
+		<!-- 新增保存Action -->
+		<action name="addAccount"
+			class="com.tarena.action.account.AddAccountAction">
+			<result name="success" type="redirectAction">
+				findAccount
+			</result>
+		</action>
+		<!-- 进入修改页面 -->
+		<action name="toUpdateAccount" class="com.tarena.action.account.ToUpdateAccountAction">
+			<result name="success">
+				/WEB-INF/account/updateAccount.jsp
+			</result>
+		</action>
+		<action name="updateAccount" class="com.tarena.action.account.UpdateAccountAction">
+			<result name="success" type="redirectAction">
+				findAccount
+			</result>
+		</action>
+	</package>
+	
+</struts>

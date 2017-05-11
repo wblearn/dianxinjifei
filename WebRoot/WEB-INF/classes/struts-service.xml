@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="service" namespace="/service" extends="netctoss">
+		<!-- 查询 -->
+		<action name="findService" class="com.tarena.action.service.FindServiceAction">
+			<param name="pageSize">5</param>
+			<result name="success">
+				/WEB-INF/service/findService.jsp
+			</result>
+		</action>
+		<!-- 跳转到新增页面 -->
+		<action name="toAddService" class="com.tarena.action.service.ToAddServiceAction">
+			<result name="success">
+				/WEB-INF/service/addService.jsp
+			</result>
+		</action>
+		<!-- 新增 -->
+		<action name="addService" class="com.tarena.action.service.AddServiceAction">
+			<result name="success" type="redirectAction">
+				findService
+			</result>
+			<result name="error">
+				toAddService
+			</result>
+		</action>
+		<!-- 暂停 -->
+		<action name="pauseService" class="com.tarena.action.service.PauseServiceAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<!-- 检查帐务帐号是否为开通状态 -->
+		<action name="checkAccStatus" class="com.tarena.action.service.CheckAccStatusAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<!-- 开通 -->
+		<action name="startService" class="com.tarena.action.service.StartServiceAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<!-- 删除 -->
+		<action name="deleteService" class="com.tarena.action.service.DeleteServiceAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="toLookService" class="com.tarena.action.service.ToLookService">
+			<result name="success">
+				/WEB-INF/service/detailService.jsp
+			</result>
+		</action>
+	</package>
+</struts>
